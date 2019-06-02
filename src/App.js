@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import {connect} from 'react-redux'
 
 class App extends Component {
 
@@ -12,13 +13,17 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <button onClick={(event) => this.handleOnClick()}>
+        <button onClick={() => this.handleOnClick()}>
           Click
         </button>
         <p>{this.props.items.length}</p>
       </div>
     );
   }
+}
+
+const mapStateToProps = (state) => {
+  return { items: state.items };
 };
 
-export default App;
+export default connect(mapStateToProps(App));
